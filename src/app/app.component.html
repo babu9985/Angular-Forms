@@ -1,0 +1,51 @@
+
+<nav class="navbar navbar-expand bg-dark">
+  <ul class="navbar nav">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/template-forms']" routerLinkActive="active">Template Forms</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/reactive-forms']" routerLinkActive="active">Reactive Forms</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/template-practice']" routerLinkActive="active">Template Practice</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/reactive-practice']" routerLinkActive="active">Reactive Practice</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/filter-pipe']" routerLinkActive="active">Filter-pipe</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="my-4">
+  <input type="text" id="username" name="username" [(ngModel)]="username" autocomplete="off">
+  {{username}}
+</div>
+<div class="my-3">
+  <input type="text" id="firstname" name="firstname" #firstname>
+  <button (click)="onFirstname(firstname.value)">click me</button>
+  {{firstnames}}
+</div>
+<div class="my-4">
+  <input type="text" id="secondname" name="secondname" #secondname>
+  {{mySecondName}}
+</div>
+<button (click)="onSecondName()">Get Second Name</button>
+
+<div>
+  <form [formGroup]="sampleForm">
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="name" id="name" name="name">
+    </div>
+  </form>
+  <button (click)="clickme()">click me</button>
+  <h3>{{formname}}</h3>
+</div>
+<div class="my-3">
+  <input type="text" id="mobile" name="mobile" (input)="inputEvent($event)">
+</div>
+{{inputEventName}}
+
+<router-outlet></router-outlet>

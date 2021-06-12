@@ -1,0 +1,61 @@
+<div>
+    <button class="btn btn-primary" (click)="fillValues()">Fill Values</button>
+</div>
+<div class="container">
+    <div class="row child">
+        <div class="col-md-12">
+            <!-- any form we can convert into template form we need to place a name Attribute
+                    in <input> tag and add ngModel .   
+            -->
+            <form (ngSubmit)="onFormSubmit()" #templateForm="ngForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" 
+                        required ngModel autocomplete="off">
+                </div>
+                <!-- <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" required email ngModel autocomplete="off">
+                </div>
+                <span *ngIf="templateForm.controls.email && !templateForm.controls.email.valid && templateForm.controls.email.touched">Plese Enter Email</span> -->
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" 
+                    required email ngModel autocomplete="off" #email="ngModel">
+                </div>
+                <span *ngIf="!email.valid && email.touched">Plese Enter Email</span>
+                <!-- <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <div class="form-control">
+                        <label for="gender" class="radio-inline">
+                            <input type="radio" name="gender" value="male" ngModel>Male
+                        </label>
+                        <label for="gender" class="radio-inline mx-3">
+                            <input type="radio" name="gender" value="female" ngModel>Female
+                        </label>
+                    </div>
+                </div> -->
+                <div ngModelGroup="userData">
+                    <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" class="form-control" ngModel="male">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="about">About</label>
+                    <textarea name="about" id="about"  rows="3" class="form-control" [(ngModel)]="about"></textarea>
+                </div>
+                </div>
+                
+                <span>{{about}}</span>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-primary" [disabled]="!templateForm.valid">Submit</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
